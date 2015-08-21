@@ -15,12 +15,12 @@ class Feed(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     user = db.relationship('User', backref=db.backref('feeds',
                                                       lazy='dynamic',
-                                                      order_by='desc(UserTeam.created_at)'))
+                                                      order_by='desc(Feed.created_at)'))
 
     team_id = db.Column(db.Integer, db.ForeignKey('team.id'))
     team = db.relationship('Team', backref=db.backref('feeds',
                                                       lazy='dynamic',
-                                                      order_by='desc(UserTeam.created_at)'))
+                                                      order_by='desc(Feed.created_at)'))
 
     def __repr__(self):
         return '<Feed %s>' % self.name
